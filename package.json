@@ -1,0 +1,17 @@
+{
+  "name": "trabalho-js",
+  "version": "1.0.0",
+  "description": "Servico de pagamento com testes em Mocha e Node Assert.",
+  "main": "src/ServicoDePagamento.js",
+  "scripts": {
+  "test": "mocha",
+  "report": "mocha --reporter json > relatorio-testes.json"
+},
+  "devDependencies": {
+    "mocha": "^11.0.0"
+  },
+  "overrides": {
+    "diff": "^8.0.3",
+    "serialize-javascript": "^7.0.5"
+  }
+}

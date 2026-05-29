@@ -1,0 +1,144 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 7,
+    "passes": 7,
+    "pending": 0,
+    "failures": 0,
+    "start": "2026-05-29T21:20:32.570Z",
+    "end": "2026-05-29T21:20:32.573Z",
+    "duration": 3
+  },
+  "tests": [
+    {
+      "title": "deve realizar pagamento com categoria cara quando o valor for maior que 100.00",
+      "fullTitle": "ServicoDePagamento deve realizar pagamento com categoria cara quando o valor for maior que 100.00",
+      "file": "C:\\pos-automacao-testes\\trabalho-js\\test\\ServicoDePagamento.test.js",
+      "duration": 1,
+      "currentRetry": 0,
+      "speed": "fast",
+      "err": {}
+    },
+    {
+      "title": "deve realizar pagamento com categoria padrão quando o valor for menor ou igual a 100.00",
+      "fullTitle": "ServicoDePagamento deve realizar pagamento com categoria padrão quando o valor for menor ou igual a 100.00",
+      "file": "C:\\pos-automacao-testes\\trabalho-js\\test\\ServicoDePagamento.test.js",
+      "duration": 0,
+      "currentRetry": 0,
+      "speed": "fast",
+      "err": {}
+    },
+    {
+      "title": "deve realizar pagamento com categoria cara quando o valor for 100.01",
+      "fullTitle": "ServicoDePagamento deve realizar pagamento com categoria cara quando o valor for 100.01",
+      "file": "C:\\pos-automacao-testes\\trabalho-js\\test\\ServicoDePagamento.test.js",
+      "duration": 0,
+      "currentRetry": 0,
+      "speed": "fast",
+      "err": {}
+    },
+    {
+      "title": "deve realizar pagamento com categoria padrão quando o valor for menor que 100.00",
+      "fullTitle": "ServicoDePagamento deve realizar pagamento com categoria padrão quando o valor for menor que 100.00",
+      "file": "C:\\pos-automacao-testes\\trabalho-js\\test\\ServicoDePagamento.test.js",
+      "duration": 0,
+      "currentRetry": 0,
+      "speed": "fast",
+      "err": {}
+    },
+    {
+      "title": "deve armazenar os pagamentos realizados na lista de pagamentos",
+      "fullTitle": "ServicoDePagamento deve armazenar os pagamentos realizados na lista de pagamentos",
+      "file": "C:\\pos-automacao-testes\\trabalho-js\\test\\ServicoDePagamento.test.js",
+      "duration": 0,
+      "currentRetry": 0,
+      "speed": "fast",
+      "err": {}
+    },
+    {
+      "title": "deve consultar apenas o ultimo pagamento realizado",
+      "fullTitle": "ServicoDePagamento deve consultar apenas o ultimo pagamento realizado",
+      "file": "C:\\pos-automacao-testes\\trabalho-js\\test\\ServicoDePagamento.test.js",
+      "duration": 0,
+      "currentRetry": 0,
+      "speed": "fast",
+      "err": {}
+    },
+    {
+      "title": "deve retornar null quando nenhum pagamento tiver sido realizado",
+      "fullTitle": "ServicoDePagamento deve retornar null quando nenhum pagamento tiver sido realizado",
+      "file": "C:\\pos-automacao-testes\\trabalho-js\\test\\ServicoDePagamento.test.js",
+      "duration": 0,
+      "currentRetry": 0,
+      "speed": "fast",
+      "err": {}
+    }
+  ],
+  "pending": [],
+  "failures": [],
+  "passes": [
+    {
+      "title": "deve realizar pagamento com categoria cara quando o valor for maior que 100.00",
+      "fullTitle": "ServicoDePagamento deve realizar pagamento com categoria cara quando o valor for maior que 100.00",
+      "file": "C:\\pos-automacao-testes\\trabalho-js\\test\\ServicoDePagamento.test.js",
+      "duration": 1,
+      "currentRetry": 0,
+      "speed": "fast",
+      "err": {}
+    },
+    {
+      "title": "deve realizar pagamento com categoria padrão quando o valor for menor ou igual a 100.00",
+      "fullTitle": "ServicoDePagamento deve realizar pagamento com categoria padrão quando o valor for menor ou igual a 100.00",
+      "file": "C:\\pos-automacao-testes\\trabalho-js\\test\\ServicoDePagamento.test.js",
+      "duration": 0,
+      "currentRetry": 0,
+      "speed": "fast",
+      "err": {}
+    },
+    {
+      "title": "deve realizar pagamento com categoria cara quando o valor for 100.01",
+      "fullTitle": "ServicoDePagamento deve realizar pagamento com categoria cara quando o valor for 100.01",
+      "file": "C:\\pos-automacao-testes\\trabalho-js\\test\\ServicoDePagamento.test.js",
+      "duration": 0,
+      "currentRetry": 0,
+      "speed": "fast",
+      "err": {}
+    },
+    {
+      "title": "deve realizar pagamento com categoria padrão quando o valor for menor que 100.00",
+      "fullTitle": "ServicoDePagamento deve realizar pagamento com categoria padrão quando o valor for menor que 100.00",
+      "file": "C:\\pos-automacao-testes\\trabalho-js\\test\\ServicoDePagamento.test.js",
+      "duration": 0,
+      "currentRetry": 0,
+      "speed": "fast",
+      "err": {}
+    },
+    {
+      "title": "deve armazenar os pagamentos realizados na lista de pagamentos",
+      "fullTitle": "ServicoDePagamento deve armazenar os pagamentos realizados na lista de pagamentos",
+      "file": "C:\\pos-automacao-testes\\trabalho-js\\test\\ServicoDePagamento.test.js",
+      "duration": 0,
+      "currentRetry": 0,
+      "speed": "fast",
+      "err": {}
+    },
+    {
+      "title": "deve consultar apenas o ultimo pagamento realizado",
+      "fullTitle": "ServicoDePagamento deve consultar apenas o ultimo pagamento realizado",
+      "file": "C:\\pos-automacao-testes\\trabalho-js\\test\\ServicoDePagamento.test.js",
+      "duration": 0,
+      "currentRetry": 0,
+      "speed": "fast",
+      "err": {}
+    },
+    {
+      "title": "deve retornar null quando nenhum pagamento tiver sido realizado",
+      "fullTitle": "ServicoDePagamento deve retornar null quando nenhum pagamento tiver sido realizado",
+      "file": "C:\\pos-automacao-testes\\trabalho-js\\test\\ServicoDePagamento.test.js",
+      "duration": 0,
+      "currentRetry": 0,
+      "speed": "fast",
+      "err": {}
+    }
+  ]
+}
