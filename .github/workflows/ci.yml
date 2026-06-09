@@ -27,6 +27,9 @@ jobs:
       - name: Instalar dependencias
         run: npm ci
 
+      - name: Executar lint
+        run: npm run lint
+
       - name: Executar testes automatizados
         run: npm test
 
@@ -44,3 +47,26 @@ jobs:
             relatorio-testes.html
           if-no-files-found: error
           retention-days: 7
+
+      - name: Enviar relatorio por e-mail
+        if: always()
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: ${{ secrets.SMTP_SERVER }}
+          server_port: ${{ secrets.SMTP_PORT }}
+          username: ${{ secrets.SMTP_USERNAME }}
+          password: ${{ secrets.SMTP_PASSWORD }}
+          subject: Relatorio de testes - ${{ github.repository }}
+          to: ${{ secrets.SMTP_USERNAME }}
+          from: GitHub Actions
+          body: |
+            Ola!
+
+            A pipeline foi executada e os relatorios de testes estao anexados neste e-mail.
+
+            Repositorio: ${{ github.repository }}
+            Workflow: ${{ github.workflow }}
+            Branch: ${{ github.ref_name }}
+            Status do job: ${{ job.status }}
+            Execucao: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          attachments: relatorio-testes.html,relatorio-testes.json

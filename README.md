@@ -65,9 +65,24 @@ Ela contempla os requisitos:
 - Execução manual pelo botão `Run workflow`, usando o evento `workflow_dispatch`.
 - Execução agendada toda segunda-feira às 09:00 UTC, usando `schedule` com cron.
 - Instalação limpa das dependências com `npm ci`.
+- Verificação de sintaxe com `npm run lint`.
 - Execução dos testes automatizados com `npm test`.
 - Geração dos relatórios de teste com `npm run report`.
 - Publicação dos arquivos `relatorio-testes.json` e `relatorio-testes.html` como artifact da pipeline.
+- Envio dos relatórios por e-mail com os arquivos anexados.
+
+## Configuração do envio por e-mail
+
+Para enviar o relatório por e-mail, a pipeline usa os seguintes secrets cadastrados no GitHub Actions:
+
+```text
+SMTP_SERVER=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USERNAME=seu-email@gmail.com
+SMTP_PASSWORD=senha de app do Gmail
+```
+
+Esses secrets devem ser cadastrados em `Settings > Secrets and variables > Actions`. O e-mail é enviado para o endereço configurado em `SMTP_USERNAME` e leva `relatorio-testes.html` e `relatorio-testes.json` como anexos.
 
 ## Como acessar o relatório no GitHub Actions
 
@@ -76,7 +91,7 @@ Ela contempla os requisitos:
 3. Ao final da página da execução, baixe o artifact chamado `relatorio-testes`.
 4. Extraia o arquivo baixado e abra `relatorio-testes.html` no navegador.
 
-O relatório também é gerado quando os testes falham, porque as etapas de geração e publicação usam `if: always()`.
+O relatório também é gerado, publicado e enviado por e-mail quando os testes falham, porque essas etapas usam `if: always()`.
 
 ## Conceitos utilizados
 
@@ -89,6 +104,7 @@ O relatório também é gerado quando os testes falham, porque as etapas de gera
 - `actions/setup-node`: action usada para configurar a versão do Node.js.
 - `artifact`: arquivo gerado durante a pipeline e armazenado para consulta posterior.
 - `cron`: sintaxe usada para configurar execuções agendadas.
+- `secrets`: variáveis protegidas usadas para armazenar dados sensíveis, como usuário e senha SMTP.
 
 ## Tecnologias
 

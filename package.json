@@ -4,6 +4,7 @@
   "description": "Servico de pagamento com testes em Mocha e Node Assert.",
   "main": "src/ServicoDePagamento.js",
   "scripts": {
+    "lint": "node --check src/ServicoDePagamento.js && node --check test/ServicoDePagamento.test.js && node --check scripts/gerar-relatorio.js",
     "test": "mocha",
     "report": "node scripts/gerar-relatorio.js"
   },
