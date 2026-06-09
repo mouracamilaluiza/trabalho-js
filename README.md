@@ -27,6 +27,7 @@ O projeto implementa uma classe `ServicoDePagamento`, responsável por registrar
 | Item                  | Link                                                                                               |
 | --------------------- | -------------------------------------------------------------------------------------------------- |
 | Pipeline              | [Acessar GitHub Actions](https://github.com/mouracamilaluiza/trabalho-js/actions/workflows/ci.yml) |
+| Relatório Allure      | [Acessar GitHub Pages](https://mouracamilaluiza.github.io/trabalho-js/)                            |
 | Workflow              | [.github/workflows/ci.yml](.github/workflows/ci.yml)                                               |
 | Testes unitários      | [test/unit](test/unit)                                                                             |
 | Testes E2E            | [test/e2e/frontend.spec.js](test/e2e/frontend.spec.js)                                             |
@@ -155,7 +156,11 @@ Etapas executadas:
 
 ## Como Acessar o Relatório
 
-O relatório Allure é publicado no GitHub Pages pela própria pipeline. O link direto é exibido na execução da workflow e enviado por e-mail.
+O relatório Allure é publicado no GitHub Pages pela própria pipeline:
+
+[https://mouracamilaluiza.github.io/trabalho-js/](https://mouracamilaluiza.github.io/trabalho-js/)
+
+O link direto também é exibido na execução da workflow e enviado por e-mail.
 
 Também é possível baixar o artifact:
 
