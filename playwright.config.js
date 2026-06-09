@@ -1,4 +1,4 @@
-const { defineConfig } = require("@playwright/test");
+const { defineConfig, devices } = require("@playwright/test");
 
 module.exports = defineConfig({
   testDir: "./test",
@@ -31,15 +31,32 @@ module.exports = defineConfig({
   ],
   projects: [
     {
+      // Testes unitários rodam uma única vez, sem multiplicar por navegador.
+      name: "unit",
+      testMatch: /.*\/unit\/.*\.test\.js/,
+    },
+    {
+      // Testes E2E rodam no Chromium.
       name: "chromium",
+      testMatch: /.*\/e2e\/.*\.spec\.js/,
       use: {
         browserName: "chromium",
       },
     },
     {
+      // Testes E2E também rodam no Firefox para validar compatibilidade.
       name: "firefox",
+      testMatch: /.*\/e2e\/.*\.spec\.js/,
       use: {
         browserName: "firefox",
+      },
+    },
+    {
+      // Testes E2E em viewport mobile para validar responsividade.
+      name: "mobile-chromium",
+      testMatch: /.*\/e2e\/.*\.spec\.js/,
+      use: {
+        ...devices["Pixel 5"],
       },
     },
   ],

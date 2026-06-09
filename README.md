@@ -88,6 +88,8 @@ O arquivo `shared/services/ServicoDePagamento.js` usa essa camada de domínio pa
 
 Os testes seguem uma única convenção de pasta: `test/unit` para testes unitários e `test/e2e` para testes de front, ambos executados com Playwright Test.
 
+No `playwright.config.js`, os testes unitários rodam uma única vez no projeto `unit`. Os testes E2E rodam em paralelo nos projetos `chromium`, `firefox` e `mobile-chromium`, validando desktop e mobile.
+
 Os testes E2E usam Page Object em `test/e2e/pages/PagamentoPage.js` para concentrar navegação, seletores e ações da tela de pagamento.
 
 ## Interface Web
