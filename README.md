@@ -1,5 +1,7 @@
 # Trabalho JS - Serviço de Pagamento
 
+[![CI - Testes Automatizados](https://github.com/mouracamilaluiza/trabalho-js/actions/workflows/ci.yml/badge.svg)](https://github.com/mouracamilaluiza/trabalho-js/actions/workflows/ci.yml)
+
 Projeto em JavaScript com uma classe para realizar pagamentos e consultar o último pagamento realizado.
 
 ## Funcionalidades
@@ -49,6 +51,8 @@ O comando acima executa o Mocha com o reporter JSON e gera o arquivo `relatorio-
 
 A pipeline foi criada com GitHub Actions no arquivo `.github/workflows/ci.yml`.
 
+- [Acessar a página da pipeline no GitHub Actions](https://github.com/mouracamilaluiza/trabalho-js/actions/workflows/ci.yml)
+
 Ela contempla os requisitos:
 
 - Execução por `push` nas branches `main` e `master`.
@@ -61,7 +65,7 @@ Ela contempla os requisitos:
 
 ## Como acessar o relatório no GitHub Actions
 
-1. Acesse a aba `Actions` do repositório no GitHub.
+1. Acesse a [página da pipeline no GitHub Actions](https://github.com/mouracamilaluiza/trabalho-js/actions/workflows/ci.yml).
 2. Abra a execução da workflow `CI - Testes Automatizados`.
 3. Ao final da página da execução, baixe o artifact chamado `relatorio-testes`.
 
