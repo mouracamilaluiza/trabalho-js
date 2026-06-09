@@ -146,7 +146,7 @@ Etapas executadas:
 2. Configura o Node.js.
 3. Configura o Java usado pelo Allure.
 4. Instala as dependências com `npm ci`.
-5. Instala o Chromium usado pelo Playwright.
+5. Instala os navegadores Chromium e Firefox usados pelo Playwright.
 6. Executa o lint com `npm run lint`.
 7. Executa os testes com `npm test`.
 8. Gera o relatório Allure.

@@ -49,7 +49,7 @@ jobs:
         run: npm ci
 
       - name: Instalar navegadores do Playwright
-        run: npx playwright install --with-deps chromium
+        run: npx playwright install --with-deps chromium firefox
 
       - name: Executar lint
         run: npm run lint

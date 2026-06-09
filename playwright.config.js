@@ -13,8 +13,8 @@ module.exports = defineConfig({
   forbidOnly: !!process.env.CI,
   // Reexecuta testes instáveis apenas no ambiente de CI.
   retries: process.env.CI ? 2 : 0,
-  // Mantém a CI mais previsível; localmente o Playwright decide a quantidade.
-  workers: process.env.CI ? 1 : undefined,
+  // Usa paralelismo controlado na CI; localmente o Playwright decide a quantidade.
+  workers: process.env.CI ? 2 : undefined,
   use: {
     // Evidências geradas apenas quando ajudam a investigar falhas.
     screenshot: "only-on-failure",
@@ -31,10 +31,15 @@ module.exports = defineConfig({
   ],
   projects: [
     {
-      // Projeto principal usado nos testes de front.
       name: "chromium",
       use: {
         browserName: "chromium",
+      },
+    },
+    {
+      name: "firefox",
+      use: {
+        browserName: "firefox",
       },
     },
   ],
