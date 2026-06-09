@@ -3,15 +3,17 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Relatório de Testes</title>
+  <title>Relatório de Testes - trabalho-js</title>
   <style>
     :root {
       color-scheme: light;
-      --bg: #f6f8fb;
+      --bg: #f4f7fb;
       --panel: #ffffff;
       --text: #172033;
       --muted: #5d677a;
       --border: #d9deea;
+      --accent: #2454a6;
+      --accent-bg: #eef4ff;
       --ok: #147a45;
       --ok-bg: #e8f6ef;
       --fail: #b42318;
@@ -31,18 +33,41 @@
     }
 
     main {
-      width: min(1040px, calc(100% - 32px));
+      width: min(1120px, calc(100% - 32px));
       margin: 32px auto;
     }
 
     header {
       margin-bottom: 24px;
+      padding: 24px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 8px;
     }
 
     h1 {
       margin: 0 0 8px;
-      font-size: 32px;
+      font-size: 34px;
       letter-spacing: 0;
+    }
+
+    h2 {
+      margin: 0 0 6px;
+      font-size: 22px;
+      letter-spacing: 0;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    .eyebrow {
+      margin-bottom: 8px;
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0;
+      text-transform: uppercase;
     }
 
     .meta {
@@ -59,6 +84,29 @@
       grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
       gap: 12px;
       margin: 24px 0;
+    }
+
+    .details {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 10px 18px;
+      margin-top: 20px;
+      padding-top: 18px;
+      border-top: 1px solid var(--border);
+    }
+
+    .detail {
+      display: grid;
+      gap: 2px;
+    }
+
+    .detail span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .detail strong {
+      font-size: 15px;
     }
 
     .metric {
@@ -84,11 +132,42 @@
       color: var(--ok);
     }
 
-    section {
+    .suite-section {
+      margin-top: 18px;
       background: var(--panel);
       border: 1px solid var(--border);
       border-radius: 8px;
       overflow: hidden;
+    }
+
+    .suite-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 18px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .suite-header p:not(.eyebrow) {
+      color: var(--muted);
+    }
+
+    .suite-summary {
+      display: flex;
+      flex-wrap: wrap;
+      align-content: flex-start;
+      justify-content: flex-end;
+      gap: 8px;
+      min-width: 220px;
+    }
+
+    .suite-summary span {
+      border-radius: 999px;
+      padding: 5px 10px;
+      background: var(--accent-bg);
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 700;
     }
 
     table {
@@ -160,38 +239,165 @@
     .steps li + li {
       margin-top: 4px;
     }
+
+    @media (max-width: 720px) {
+      .suite-header {
+        display: grid;
+      }
+
+      .suite-summary {
+        justify-content: flex-start;
+        min-width: 0;
+      }
+    }
   </style>
 </head>
 <body>
   <main>
     <header>
-      <h1>Relatório de Testes</h1>
-      <p class="meta">Gerado em 09/06/2026, 10:58:32</p>
+      <p class="eyebrow">Relatório automatizado</p>
+      <h1>Serviço de Pagamento</h1>
+      <p class="meta">Resultado da execução dos testes automatizados do projeto.</p>
+
+      <div class="details">
+        <div class="detail"><span>Projeto</span><strong>trabalho-js</strong></div>
+        <div class="detail"><span>Versão</span><strong>1.0.0</strong></div>
+        <div class="detail"><span>Executor</span><strong>Camila Moura</strong></div>
+        <div class="detail"><span>Ambiente</span><strong>Local</strong></div>
+        <div class="detail"><span>Node.js</span><strong>v24.16.0</strong></div>
+        <div class="detail"><span>Gerado em</span><strong>09/06/2026, 11:53:33</strong></div>
+      </div>
     </header>
 
     <div class="summary">
       <div class="metric"><strong class="result">Passou</strong><span>Resultado</span></div>
-      <div class="metric"><strong>7</strong><span>Total de testes</span></div>
-      <div class="metric"><strong>7</strong><span>Passaram</span></div>
+      <div class="metric"><strong>12</strong><span>Total de testes</span></div>
+      <div class="metric"><strong>12</strong><span>Passaram</span></div>
       <div class="metric"><strong>0</strong><span>Falharam</span></div>
-      <div class="metric"><strong>9 ms</strong><span>Duração</span></div>
+      <div class="metric"><strong>72 ms</strong><span>Duração</span></div>
     </div>
 
-    <section>
-      <table>
-        <thead>
-          <tr>
-            <th>Status</th>
-            <th>Teste</th>
-            <th>Duração</th>
-          </tr>
-        </thead>
-        <tbody>
-          
+    
+        <section class="suite-section">
+          <div class="suite-header">
+            <div>
+              <p class="eyebrow">front</p>
+              <h2>Testes de Front-end</h2>
+              <p>Validações da camada visual, formatação, renderização e tratamento de dados da interface.</p>
+            </div>
+            <div class="suite-summary">
+              <span>5 testes</span>
+              <span>5 passaram</span>
+              <span>0 falharam</span>
+            </div>
+          </div>
+
+          <table>
+            <thead>
+              <tr>
+                <th>Status</th>
+                <th>Teste</th>
+                <th>Duração</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+        <tr>
+          <td><span class="status passed">Passou</span></td>
+          <td>Front do ServicoDePagamento deve validar e normalizar os dados do formulário</td>
+          <td>2 ms</td>
+        </tr>
+        <tr class="steps-row">
+          <td></td>
+          <td colspan="2">
+            <strong>Passos verificados</strong>
+            <ol class="steps"><li>Receber dados simulando o preenchimento do formulário.</li><li>Remover espaços extras do código de barras e da empresa.</li><li>Converter o valor informado para número.</li><li>Validar se os dados normalizados estão corretos.</li></ol>
+          </td>
+        </tr>
+        
+        <tr>
+          <td><span class="status passed">Passou</span></td>
+          <td>Front do ServicoDePagamento deve rejeitar valor menor ou igual a zero</td>
+          <td>1 ms</td>
+        </tr>
+        <tr class="steps-row">
+          <td></td>
+          <td colspan="2">
+            <strong>Passos verificados</strong>
+            <ol class="steps"><li>Receber dados simulando um formulário com valor inválido.</li><li>Executar a validação dos dados do pagamento.</li><li>Verificar se uma mensagem de erro é emitida para valor menor ou igual a zero.</li></ol>
+          </td>
+        </tr>
+        
+        <tr>
+          <td><span class="status passed">Passou</span></td>
+          <td>Front do ServicoDePagamento deve formatar valores em reais</td>
+          <td>39 ms</td>
+        </tr>
+        <tr class="steps-row">
+          <td></td>
+          <td colspan="2">
+            <strong>Passos verificados</strong>
+            <ol class="steps"><li>Receber um valor numérico.</li><li>Formatar o valor usando o padrão monetário brasileiro.</li><li>Validar se o valor formatado contém centavos no formato esperado.</li></ol>
+          </td>
+        </tr>
+        
+        <tr>
+          <td><span class="status passed">Passou</span></td>
+          <td>Front do ServicoDePagamento deve escapar textos antes de renderizar HTML</td>
+          <td>0 ms</td>
+        </tr>
+        <tr class="steps-row">
+          <td></td>
+          <td colspan="2">
+            <strong>Passos verificados</strong>
+            <ol class="steps"><li>Receber um texto contendo marcação HTML.</li><li>Executar o escape dos caracteres especiais.</li><li>Validar se o texto final pode ser renderizado sem interpretar tags indevidas.</li></ol>
+          </td>
+        </tr>
+        
+        <tr>
+          <td><span class="status passed">Passou</span></td>
+          <td>Front do ServicoDePagamento deve renderizar um card de pagamento com categoria</td>
+          <td>1 ms</td>
+        </tr>
+        <tr class="steps-row">
+          <td></td>
+          <td colspan="2">
+            <strong>Passos verificados</strong>
+            <ol class="steps"><li>Receber os dados de um pagamento realizado.</li><li>Gerar o HTML do card de pagamento.</li><li>Validar se empresa, código, valor e categoria aparecem no card.</li></ol>
+          </td>
+        </tr>
+        
+            </tbody>
+          </table>
+        </section>
+        <section class="suite-section">
+          <div class="suite-header">
+            <div>
+              <p class="eyebrow">servico</p>
+              <h2>Testes do Serviço de Pagamento</h2>
+              <p>Validações da regra de negócio, registro de pagamentos, categoria e consulta do último pagamento.</p>
+            </div>
+            <div class="suite-summary">
+              <span>7 testes</span>
+              <span>7 passaram</span>
+              <span>0 falharam</span>
+            </div>
+          </div>
+
+          <table>
+            <thead>
+              <tr>
+                <th>Status</th>
+                <th>Teste</th>
+                <th>Duração</th>
+              </tr>
+            </thead>
+            <tbody>
+              
         <tr>
           <td><span class="status passed">Passou</span></td>
           <td>ServicoDePagamento deve realizar pagamento com categoria cara quando o valor for maior que 100.00</td>
-          <td>1 ms</td>
+          <td>0 ms</td>
         </tr>
         <tr class="steps-row">
           <td></td>
@@ -204,7 +410,7 @@
         <tr>
           <td><span class="status passed">Passou</span></td>
           <td>ServicoDePagamento deve realizar pagamento com categoria padrão quando o valor for menor ou igual a 100.00</td>
-          <td>0 ms</td>
+          <td>1 ms</td>
         </tr>
         <tr class="steps-row">
           <td></td>
@@ -279,9 +485,9 @@
           </td>
         </tr>
         
-        </tbody>
-      </table>
-    </section>
+            </tbody>
+          </table>
+        </section>
   </main>
 </body>
 </html>

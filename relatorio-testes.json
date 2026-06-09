@@ -1,20 +1,116 @@
 {
+  "project": {
+    "name": "trabalho-js",
+    "version": "1.0.0",
+    "displayName": "Serviço de Pagamento"
+  },
+  "execution": {
+    "author": "moura",
+    "environment": "Local",
+    "nodeVersion": "v24.16.0",
+    "workflow": null,
+    "runId": null,
+    "branch": null
+  },
   "stats": {
-    "suites": 1,
-    "tests": 7,
-    "passes": 7,
+    "suites": 2,
+    "tests": 12,
+    "passes": 12,
     "pending": 0,
     "failures": 0,
-    "start": "2026-06-09T13:58:32.448Z",
-    "end": "2026-06-09T13:58:32.457Z",
-    "duration": 9
+    "start": "2026-06-09T14:53:33.339Z",
+    "end": "2026-06-09T14:53:33.411Z",
+    "duration": 72
   },
   "tests": [
     {
+      "title": "deve validar e normalizar os dados do formulário",
+      "fullTitle": "Front do ServicoDePagamento deve validar e normalizar os dados do formulário",
+      "suite": "Front do ServicoDePagamento",
+      "type": "front",
+      "file": "C:\\pos-automacao-testes\\trabalho-js\\test\\frontend.test.js",
+      "duration": 2,
+      "currentRetry": 0,
+      "speed": "fast",
+      "steps": [
+        "Receber dados simulando o preenchimento do formulário.",
+        "Remover espaços extras do código de barras e da empresa.",
+        "Converter o valor informado para número.",
+        "Validar se os dados normalizados estão corretos."
+      ],
+      "err": {}
+    },
+    {
+      "title": "deve rejeitar valor menor ou igual a zero",
+      "fullTitle": "Front do ServicoDePagamento deve rejeitar valor menor ou igual a zero",
+      "suite": "Front do ServicoDePagamento",
+      "type": "front",
+      "file": "C:\\pos-automacao-testes\\trabalho-js\\test\\frontend.test.js",
+      "duration": 1,
+      "currentRetry": 0,
+      "speed": "fast",
+      "steps": [
+        "Receber dados simulando um formulário com valor inválido.",
+        "Executar a validação dos dados do pagamento.",
+        "Verificar se uma mensagem de erro é emitida para valor menor ou igual a zero."
+      ],
+      "err": {}
+    },
+    {
+      "title": "deve formatar valores em reais",
+      "fullTitle": "Front do ServicoDePagamento deve formatar valores em reais",
+      "suite": "Front do ServicoDePagamento",
+      "type": "front",
+      "file": "C:\\pos-automacao-testes\\trabalho-js\\test\\frontend.test.js",
+      "duration": 39,
+      "currentRetry": 0,
+      "speed": "medium",
+      "steps": [
+        "Receber um valor numérico.",
+        "Formatar o valor usando o padrão monetário brasileiro.",
+        "Validar se o valor formatado contém centavos no formato esperado."
+      ],
+      "err": {}
+    },
+    {
+      "title": "deve escapar textos antes de renderizar HTML",
+      "fullTitle": "Front do ServicoDePagamento deve escapar textos antes de renderizar HTML",
+      "suite": "Front do ServicoDePagamento",
+      "type": "front",
+      "file": "C:\\pos-automacao-testes\\trabalho-js\\test\\frontend.test.js",
+      "duration": 0,
+      "currentRetry": 0,
+      "speed": "fast",
+      "steps": [
+        "Receber um texto contendo marcação HTML.",
+        "Executar o escape dos caracteres especiais.",
+        "Validar se o texto final pode ser renderizado sem interpretar tags indevidas."
+      ],
+      "err": {}
+    },
+    {
+      "title": "deve renderizar um card de pagamento com categoria",
+      "fullTitle": "Front do ServicoDePagamento deve renderizar um card de pagamento com categoria",
+      "suite": "Front do ServicoDePagamento",
+      "type": "front",
+      "file": "C:\\pos-automacao-testes\\trabalho-js\\test\\frontend.test.js",
+      "duration": 1,
+      "currentRetry": 0,
+      "speed": "fast",
+      "steps": [
+        "Receber os dados de um pagamento realizado.",
+        "Gerar o HTML do card de pagamento.",
+        "Validar se empresa, código, valor e categoria aparecem no card."
+      ],
+      "err": {}
+    },
+    {
       "title": "deve realizar pagamento com categoria cara quando o valor for maior que 100.00",
       "fullTitle": "ServicoDePagamento deve realizar pagamento com categoria cara quando o valor for maior que 100.00",
+      "suite": "ServicoDePagamento",
+      "type": "servico",
       "file": "C:\\pos-automacao-testes\\trabalho-js\\test\\ServicoDePagamento.test.js",
-      "duration": 1,
+      "duration": 0,
       "currentRetry": 0,
       "speed": "fast",
       "steps": [
@@ -28,8 +124,10 @@
     {
       "title": "deve realizar pagamento com categoria padrão quando o valor for menor ou igual a 100.00",
       "fullTitle": "ServicoDePagamento deve realizar pagamento com categoria padrão quando o valor for menor ou igual a 100.00",
+      "suite": "ServicoDePagamento",
+      "type": "servico",
       "file": "C:\\pos-automacao-testes\\trabalho-js\\test\\ServicoDePagamento.test.js",
-      "duration": 0,
+      "duration": 1,
       "currentRetry": 0,
       "speed": "fast",
       "steps": [
@@ -43,6 +141,8 @@
     {
       "title": "deve realizar pagamento com categoria cara quando o valor for 100.01",
       "fullTitle": "ServicoDePagamento deve realizar pagamento com categoria cara quando o valor for 100.01",
+      "suite": "ServicoDePagamento",
+      "type": "servico",
       "file": "C:\\pos-automacao-testes\\trabalho-js\\test\\ServicoDePagamento.test.js",
       "duration": 0,
       "currentRetry": 0,
@@ -58,6 +158,8 @@
     {
       "title": "deve realizar pagamento com categoria padrão quando o valor for menor que 100.00",
       "fullTitle": "ServicoDePagamento deve realizar pagamento com categoria padrão quando o valor for menor que 100.00",
+      "suite": "ServicoDePagamento",
+      "type": "servico",
       "file": "C:\\pos-automacao-testes\\trabalho-js\\test\\ServicoDePagamento.test.js",
       "duration": 0,
       "currentRetry": 0,
@@ -73,6 +175,8 @@
     {
       "title": "deve armazenar os pagamentos realizados na lista de pagamentos",
       "fullTitle": "ServicoDePagamento deve armazenar os pagamentos realizados na lista de pagamentos",
+      "suite": "ServicoDePagamento",
+      "type": "servico",
       "file": "C:\\pos-automacao-testes\\trabalho-js\\test\\ServicoDePagamento.test.js",
       "duration": 0,
       "currentRetry": 0,
@@ -88,6 +192,8 @@
     {
       "title": "deve consultar apenas o ultimo pagamento realizado",
       "fullTitle": "ServicoDePagamento deve consultar apenas o ultimo pagamento realizado",
+      "suite": "ServicoDePagamento",
+      "type": "servico",
       "file": "C:\\pos-automacao-testes\\trabalho-js\\test\\ServicoDePagamento.test.js",
       "duration": 0,
       "currentRetry": 0,
@@ -104,6 +210,8 @@
     {
       "title": "deve retornar null quando nenhum pagamento tiver sido realizado",
       "fullTitle": "ServicoDePagamento deve retornar null quando nenhum pagamento tiver sido realizado",
+      "suite": "ServicoDePagamento",
+      "type": "servico",
       "file": "C:\\pos-automacao-testes\\trabalho-js\\test\\ServicoDePagamento.test.js",
       "duration": 0,
       "currentRetry": 0,
@@ -120,10 +228,93 @@
   "failures": [],
   "passes": [
     {
+      "title": "deve validar e normalizar os dados do formulário",
+      "fullTitle": "Front do ServicoDePagamento deve validar e normalizar os dados do formulário",
+      "suite": "Front do ServicoDePagamento",
+      "type": "front",
+      "file": "C:\\pos-automacao-testes\\trabalho-js\\test\\frontend.test.js",
+      "duration": 2,
+      "currentRetry": 0,
+      "speed": "fast",
+      "steps": [
+        "Receber dados simulando o preenchimento do formulário.",
+        "Remover espaços extras do código de barras e da empresa.",
+        "Converter o valor informado para número.",
+        "Validar se os dados normalizados estão corretos."
+      ],
+      "err": {}
+    },
+    {
+      "title": "deve rejeitar valor menor ou igual a zero",
+      "fullTitle": "Front do ServicoDePagamento deve rejeitar valor menor ou igual a zero",
+      "suite": "Front do ServicoDePagamento",
+      "type": "front",
+      "file": "C:\\pos-automacao-testes\\trabalho-js\\test\\frontend.test.js",
+      "duration": 1,
+      "currentRetry": 0,
+      "speed": "fast",
+      "steps": [
+        "Receber dados simulando um formulário com valor inválido.",
+        "Executar a validação dos dados do pagamento.",
+        "Verificar se uma mensagem de erro é emitida para valor menor ou igual a zero."
+      ],
+      "err": {}
+    },
+    {
+      "title": "deve formatar valores em reais",
+      "fullTitle": "Front do ServicoDePagamento deve formatar valores em reais",
+      "suite": "Front do ServicoDePagamento",
+      "type": "front",
+      "file": "C:\\pos-automacao-testes\\trabalho-js\\test\\frontend.test.js",
+      "duration": 39,
+      "currentRetry": 0,
+      "speed": "medium",
+      "steps": [
+        "Receber um valor numérico.",
+        "Formatar o valor usando o padrão monetário brasileiro.",
+        "Validar se o valor formatado contém centavos no formato esperado."
+      ],
+      "err": {}
+    },
+    {
+      "title": "deve escapar textos antes de renderizar HTML",
+      "fullTitle": "Front do ServicoDePagamento deve escapar textos antes de renderizar HTML",
+      "suite": "Front do ServicoDePagamento",
+      "type": "front",
+      "file": "C:\\pos-automacao-testes\\trabalho-js\\test\\frontend.test.js",
+      "duration": 0,
+      "currentRetry": 0,
+      "speed": "fast",
+      "steps": [
+        "Receber um texto contendo marcação HTML.",
+        "Executar o escape dos caracteres especiais.",
+        "Validar se o texto final pode ser renderizado sem interpretar tags indevidas."
+      ],
+      "err": {}
+    },
+    {
+      "title": "deve renderizar um card de pagamento com categoria",
+      "fullTitle": "Front do ServicoDePagamento deve renderizar um card de pagamento com categoria",
+      "suite": "Front do ServicoDePagamento",
+      "type": "front",
+      "file": "C:\\pos-automacao-testes\\trabalho-js\\test\\frontend.test.js",
+      "duration": 1,
+      "currentRetry": 0,
+      "speed": "fast",
+      "steps": [
+        "Receber os dados de um pagamento realizado.",
+        "Gerar o HTML do card de pagamento.",
+        "Validar se empresa, código, valor e categoria aparecem no card."
+      ],
+      "err": {}
+    },
+    {
       "title": "deve realizar pagamento com categoria cara quando o valor for maior que 100.00",
       "fullTitle": "ServicoDePagamento deve realizar pagamento com categoria cara quando o valor for maior que 100.00",
+      "suite": "ServicoDePagamento",
+      "type": "servico",
       "file": "C:\\pos-automacao-testes\\trabalho-js\\test\\ServicoDePagamento.test.js",
-      "duration": 1,
+      "duration": 0,
       "currentRetry": 0,
       "speed": "fast",
       "steps": [
@@ -137,8 +328,10 @@
     {
       "title": "deve realizar pagamento com categoria padrão quando o valor for menor ou igual a 100.00",
       "fullTitle": "ServicoDePagamento deve realizar pagamento com categoria padrão quando o valor for menor ou igual a 100.00",
+      "suite": "ServicoDePagamento",
+      "type": "servico",
       "file": "C:\\pos-automacao-testes\\trabalho-js\\test\\ServicoDePagamento.test.js",
-      "duration": 0,
+      "duration": 1,
       "currentRetry": 0,
       "speed": "fast",
       "steps": [
@@ -152,6 +345,8 @@
     {
       "title": "deve realizar pagamento com categoria cara quando o valor for 100.01",
       "fullTitle": "ServicoDePagamento deve realizar pagamento com categoria cara quando o valor for 100.01",
+      "suite": "ServicoDePagamento",
+      "type": "servico",
       "file": "C:\\pos-automacao-testes\\trabalho-js\\test\\ServicoDePagamento.test.js",
       "duration": 0,
       "currentRetry": 0,
@@ -167,6 +362,8 @@
     {
       "title": "deve realizar pagamento com categoria padrão quando o valor for menor que 100.00",
       "fullTitle": "ServicoDePagamento deve realizar pagamento com categoria padrão quando o valor for menor que 100.00",
+      "suite": "ServicoDePagamento",
+      "type": "servico",
       "file": "C:\\pos-automacao-testes\\trabalho-js\\test\\ServicoDePagamento.test.js",
       "duration": 0,
       "currentRetry": 0,
@@ -182,6 +379,8 @@
     {
       "title": "deve armazenar os pagamentos realizados na lista de pagamentos",
       "fullTitle": "ServicoDePagamento deve armazenar os pagamentos realizados na lista de pagamentos",
+      "suite": "ServicoDePagamento",
+      "type": "servico",
       "file": "C:\\pos-automacao-testes\\trabalho-js\\test\\ServicoDePagamento.test.js",
       "duration": 0,
       "currentRetry": 0,
@@ -197,6 +396,8 @@
     {
       "title": "deve consultar apenas o ultimo pagamento realizado",
       "fullTitle": "ServicoDePagamento deve consultar apenas o ultimo pagamento realizado",
+      "suite": "ServicoDePagamento",
+      "type": "servico",
       "file": "C:\\pos-automacao-testes\\trabalho-js\\test\\ServicoDePagamento.test.js",
       "duration": 0,
       "currentRetry": 0,
@@ -213,6 +414,8 @@
     {
       "title": "deve retornar null quando nenhum pagamento tiver sido realizado",
       "fullTitle": "ServicoDePagamento deve retornar null quando nenhum pagamento tiver sido realizado",
+      "suite": "ServicoDePagamento",
+      "type": "servico",
       "file": "C:\\pos-automacao-testes\\trabalho-js\\test\\ServicoDePagamento.test.js",
       "duration": 0,
       "currentRetry": 0,

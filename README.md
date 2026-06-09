@@ -18,6 +18,7 @@ O projeto implementa uma classe `ServicoDePagamento`, responsável por registrar
 | Histórico | Armazena os pagamentos realizados em memória. |
 | Consulta | Retorna apenas o último pagamento registrado. |
 | Testes | Valida os principais cenários com Mocha e Node Assert. |
+| Front-end | Disponibiliza uma tela simples para registrar e visualizar pagamentos. |
 | Relatórios | Gera relatório em JSON e HTML. |
 
 ## Links Rápidos
@@ -27,6 +28,7 @@ O projeto implementa uma classe `ServicoDePagamento`, responsável por registrar
 | Pipeline | [Acessar GitHub Actions](https://github.com/mouracamilaluiza/trabalho-js/actions/workflows/ci.yml) |
 | Workflow | [.github/workflows/ci.yml](.github/workflows/ci.yml) |
 | Testes | [test/ServicoDePagamento.test.js](test/ServicoDePagamento.test.js) |
+| Interface | [public/index.html](public/index.html) |
 | Gerador de relatório | [scripts/gerar-relatorio.js](scripts/gerar-relatorio.js) |
 
 ## Estrutura
@@ -38,9 +40,14 @@ O projeto implementa uma classe `ServicoDePagamento`, responsável por registrar
 │       └── ci.yml
 ├── scripts/
 │   └── gerar-relatorio.js
+├── public/
+│   ├── app.js
+│   ├── index.html
+│   └── styles.css
 ├── src/
 │   └── ServicoDePagamento.js
 ├── test/
+│   ├── frontend.test.js
 │   └── ServicoDePagamento.test.js
 ├── package.json
 ├── relatorio-testes.html
@@ -56,6 +63,20 @@ O projeto implementa uma classe `ServicoDePagamento`, responsável por registrar
 | `npm test` | Executa os testes automatizados com Mocha. |
 | `npm run report` | Executa os testes e gera os relatórios `JSON` e `HTML`. |
 
+## Interface Web
+
+O projeto possui uma interface simples em `public/index.html` para registrar pagamentos pelo navegador.
+
+Funcionalidades da tela:
+
+- Cadastro de pagamento com código de barras, empresa e valor.
+- Validação dos campos obrigatórios.
+- Classificação automática da categoria do pagamento.
+- Exibição do último pagamento realizado.
+- Listagem do histórico de pagamentos cadastrados na sessão.
+
+Para abrir localmente, acesse o arquivo `public/index.html` no navegador.
+
 ## Relatórios de Teste
 
 Ao executar:
@@ -69,7 +90,7 @@ São gerados dois arquivos na raiz do projeto:
 | Arquivo | Uso |
 | --- | --- |
 | `relatorio-testes.json` | Relatório estruturado para leitura automatizada. |
-| `relatorio-testes.html` | Relatório visual para abrir no navegador, com resumo, status e passos verificados por cenário. |
+| `relatorio-testes.html` | Relatório visual para abrir no navegador, com dados do projeto, executor, ambiente, resumo por suíte, status e passos verificados por cenário. |
 
 ## Pipeline de Integração Contínua
 
@@ -121,4 +142,3 @@ Cadastre os secrets em:
 | `EMAIL_TO` | E-mail que receberá o relatório. |
 
 O e-mail enviado contém `relatorio-testes.html` e `relatorio-testes.json` como anexos.
-

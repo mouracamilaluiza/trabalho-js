@@ -25,4 +25,10 @@ class ServicoDePagamento {
   }
 }
 
-module.exports = ServicoDePagamento;
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = ServicoDePagamento;
+}
+
+if (typeof window !== 'undefined') {
+  window.ServicoDePagamento = ServicoDePagamento;
+}
