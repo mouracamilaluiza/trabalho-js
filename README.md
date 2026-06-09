@@ -2,7 +2,8 @@
 
 [![CI - Testes Automatizados](https://github.com/mouracamilaluiza/trabalho-js/actions/workflows/ci.yml/badge.svg)](https://github.com/mouracamilaluiza/trabalho-js/actions/workflows/ci.yml)
 ![Node.js](https://img.shields.io/badge/Node.js-20.x-339933?logo=node.js&logoColor=white)
-![Mocha](https://img.shields.io/badge/Testes-Mocha-8D6748)
+![Playwright](https://img.shields.io/badge/E2E-Playwright-2EAD33?logo=playwright&logoColor=white)
+![Allure](https://img.shields.io/badge/Relatorio-Allure-FD6A02)
 ![GitHub Actions](https://img.shields.io/badge/CI-GitHub%20Actions-2088FF?logo=githubactions&logoColor=white)
 
 Projeto em JavaScript para simular um serviço de pagamento, com testes automatizados, geração de relatórios e pipeline de integração contínua no GitHub Actions.
@@ -11,25 +12,27 @@ Projeto em JavaScript para simular um serviço de pagamento, com testes automati
 
 O projeto implementa uma classe `ServicoDePagamento`, responsável por registrar pagamentos e consultar o último pagamento realizado.
 
-| Recurso | Descrição |
-| --- | --- |
-| Pagamento | Registra código de barras, empresa, valor e categoria. |
-| Categoria | Define `cara` para valores acima de `100.00` e `padrão` para valores até `100.00`. |
-| Histórico | Armazena os pagamentos realizados em memória. |
-| Consulta | Retorna apenas o último pagamento registrado. |
-| Testes | Valida os principais cenários com Mocha e Node Assert. |
-| Front-end | Disponibiliza uma tela simples para registrar e visualizar pagamentos. |
-| Relatórios | Gera relatório em JSON e HTML. |
+| Recurso    | Descrição                                                                          |
+| ---------- | ---------------------------------------------------------------------------------- |
+| Pagamento  | Registra código de barras, empresa, valor e categoria.                             |
+| Categoria  | Define `cara` para valores acima de `100.00` e `padrão` para valores até `100.00`. |
+| Histórico  | Armazena os pagamentos realizados em memória.                                      |
+| Consulta   | Retorna apenas o último pagamento registrado.                                      |
+| Testes     | Valida os principais cenários com Playwright Test.                                 |
+| Front-end  | Disponibiliza uma tela simples para registrar e visualizar pagamentos.             |
+| Relatórios | Gera relatório Allure e relatório HTML nativo do Playwright como apoio local.      |
 
 ## Links Rápidos
 
-| Item | Link |
-| --- | --- |
-| Pipeline | [Acessar GitHub Actions](https://github.com/mouracamilaluiza/trabalho-js/actions/workflows/ci.yml) |
-| Workflow | [.github/workflows/ci.yml](.github/workflows/ci.yml) |
-| Testes | [test/ServicoDePagamento.test.js](test/ServicoDePagamento.test.js) |
-| Interface | [public/index.html](public/index.html) |
-| Gerador de relatório | [scripts/gerar-relatorio.js](scripts/gerar-relatorio.js) |
+| Item                  | Link                                                                                               |
+| --------------------- | -------------------------------------------------------------------------------------------------- |
+| Pipeline              | [Acessar GitHub Actions](https://github.com/mouracamilaluiza/trabalho-js/actions/workflows/ci.yml) |
+| Workflow              | [.github/workflows/ci.yml](.github/workflows/ci.yml)                                               |
+| Testes unitários      | [test/unit](test/unit)                                                                             |
+| Testes E2E            | [test/e2e/frontend.spec.js](test/e2e/frontend.spec.js)                                             |
+| Interface             | [public/index.html](public/index.html)                                                             |
+| Serviço compartilhado | [shared/services/ServicoDePagamento.js](shared/services/ServicoDePagamento.js)                     |
+| Domínio               | [shared/domain/Pagamento.js](shared/domain/Pagamento.js)                                           |
 
 ## Estrutura
 
@@ -38,30 +41,53 @@ O projeto implementa uma classe `ServicoDePagamento`, responsável por registrar
 ├── .github/
 │   └── workflows/
 │       └── ci.yml
-├── scripts/
-│   └── gerar-relatorio.js
 ├── public/
 │   ├── app.js
 │   ├── index.html
 │   └── styles.css
-├── src/
-│   └── ServicoDePagamento.js
+├── shared/
+│   ├── domain/
+│   │   └── Pagamento.js
+│   ├── services/
+│   │   └── ServicoDePagamento.js
+│   └── utils/
+│       └── escape-html.js
 ├── test/
-│   ├── frontend.test.js
-│   └── ServicoDePagamento.test.js
-├── package.json
-├── relatorio-testes.html
-└── relatorio-testes.json
+│   ├── e2e/
+│   │   ├── pages/
+│   │   │   └── PagamentoPage.js
+│   │   └── frontend.spec.js
+│   └── unit/
+│       ├── Pagamento.test.js
+│       └── ServicoDePagamento.test.js
+├── playwright.config.js
+└── package.json
 ```
 
 ## Comandos
 
-| Comando | Descrição |
-| --- | --- |
-| `npm install` | Instala as dependências do projeto. |
-| `npm run lint` | Verifica a sintaxe dos arquivos JavaScript com `node --check`. |
-| `npm test` | Executa os testes automatizados com Mocha. |
-| `npm run report` | Executa os testes e gera os relatórios `JSON` e `HTML`. |
+| Comando                   | Descrição                                                     |
+| ------------------------- | ------------------------------------------------------------- |
+| `npm install`             | Instala as dependências do projeto.                           |
+| `npm run lint`            | Verifica a formatação do projeto com Prettier.                |
+| `npm run format`          | Formata os arquivos do projeto com Prettier.                  |
+| `npm run test:unit`       | Executa os testes unitários com Playwright.                   |
+| `npm run test:e2e`        | Executa os testes de front com Playwright.                    |
+| `npm test`                | Executa os testes unitários e E2E.                            |
+| `npm run allure:generate` | Gera o relatório HTML do Allure a partir de `allure-results`. |
+| `npm run allure:open`     | Abre o relatório Allure gerado localmente.                    |
+
+Para gerar ou abrir o relatório Allure localmente, é necessário ter Java instalado e disponível no `PATH` ou configurar a variável `JAVA_HOME`.
+
+## Arquitetura
+
+A regra de negócio do pagamento fica em `shared/domain/Pagamento.js`, onde estão as decisões de domínio, como a classificação da categoria do pagamento.
+
+O arquivo `shared/services/ServicoDePagamento.js` usa essa camada de domínio para registrar e consultar pagamentos, sem repetir regras. Ele também é o ponto de entrada Node.js definido no `main` do `package.json`. Já a interface em `public/index.html` carrega os arquivos compartilhados diretamente.
+
+Os testes seguem uma única convenção de pasta: `test/unit` para testes unitários e `test/e2e` para testes de front, ambos executados com Playwright Test.
+
+Os testes E2E usam Page Object em `test/e2e/pages/PagamentoPage.js` para concentrar navegação, seletores e ações da tela de pagamento.
 
 ## Interface Web
 
@@ -77,20 +103,29 @@ Funcionalidades da tela:
 
 Para abrir localmente, acesse o arquivo `public/index.html` no navegador.
 
-## Relatórios de Teste
+## Relatório de Teste
 
 Ao executar:
 
 ```bash
-npm run report
+npm test
+npm run allure:generate
 ```
 
-São gerados dois arquivos na raiz do projeto:
+São gerados os relatórios:
 
-| Arquivo | Uso |
-| --- | --- |
-| `relatorio-testes.json` | Relatório estruturado para leitura automatizada. |
-| `relatorio-testes.html` | Relatório visual para abrir no navegador, com dados do projeto, executor, ambiente, resumo por suíte, status e passos verificados por cenário. |
+| Arquivo                        | Uso                                                      |
+| ------------------------------ | -------------------------------------------------------- |
+| `allure-report/index.html`     | Relatório HTML do Allure para testes unitários e E2E.    |
+| `playwright-report/index.html` | Relatório HTML nativo do Playwright, mantido como apoio. |
+
+Para abrir o Allure localmente:
+
+```bash
+npm run allure:open
+```
+
+Quando um teste E2E falha, o Playwright gera screenshot e trace automaticamente, conforme configurado em `playwright.config.js`.
 
 ## Pipeline de Integração Contínua
 
@@ -98,32 +133,39 @@ A pipeline foi criada com GitHub Actions no arquivo `.github/workflows/ci.yml`.
 
 Ela é executada em três situações:
 
-| Gatilho | Evento |
-| --- | --- |
-| Push | Executa ao enviar alterações para `main` ou `master`. |
-| Manual | Executa pelo botão `Run workflow`. |
-| Agendado | Executa toda segunda-feira às 09:00 UTC. |
+| Gatilho  | Evento                                                |
+| -------- | ----------------------------------------------------- |
+| Push     | Executa ao enviar alterações para `main` ou `master`. |
+| Manual   | Executa pelo botão `Run workflow`.                    |
+| Agendado | Executa toda segunda-feira às 09:00 UTC.              |
 
 Etapas executadas:
 
 1. Baixa o código do repositório.
 2. Configura o Node.js.
-3. Instala as dependências com `npm ci`.
-4. Executa o lint com `npm run lint`.
-5. Executa os testes com `npm test`.
-6. Gera os relatórios com `npm run report`.
-7. Publica os relatórios como artifact.
-8. Envia os relatórios por e-mail.
+3. Configura o Java usado pelo Allure.
+4. Instala as dependências com `npm ci`.
+5. Instala o Chromium usado pelo Playwright.
+6. Executa o lint com `npm run lint`.
+7. Executa os testes com `npm test`.
+8. Gera o relatório Allure.
+9. Publica o relatório Allure no GitHub Pages.
+10. Publica o relatório Allure como artifact.
+11. Envia um e-mail com o status, o link da execução e o link direto do Allure.
 
 ## Como Acessar o Relatório
 
+O relatório Allure é publicado no GitHub Pages pela própria pipeline. O link direto é exibido na execução da workflow e enviado por e-mail.
+
+Também é possível baixar o artifact:
+
 1. Acesse a [página da pipeline no GitHub Actions](https://github.com/mouracamilaluiza/trabalho-js/actions/workflows/ci.yml).
 2. Abra uma execução da workflow `CI - Testes Automatizados`.
-3. Baixe o artifact chamado `relatorio-testes`.
+3. Baixe o artifact chamado `allure-report`.
 4. Extraia o arquivo baixado.
-5. Abra `relatorio-testes.html` no navegador.
+5. Abra `allure-report/index.html` no navegador.
 
-O relatório é gerado, publicado e enviado por e-mail mesmo quando os testes falham, porque essas etapas usam `if: always()`.
+Para a publicação no GitHub Pages funcionar, configure o repositório em `Settings > Pages` usando `GitHub Actions` como source.
 
 ## Envio por E-mail
 
@@ -133,12 +175,12 @@ Cadastre os secrets em:
 
 `Settings > Secrets and variables > Actions > Repository secrets`
 
-| Secret | Valor esperado |
-| --- | --- |
-| `SMTP_SERVER` | `smtp.gmail.com` |
-| `SMTP_PORT` | `587` |
-| `SMTP_USERNAME` | E-mail usado para envio. |
+| Secret          | Valor esperado                      |
+| --------------- | ----------------------------------- |
+| `SMTP_SERVER`   | `smtp.gmail.com`                    |
+| `SMTP_PORT`     | `587`                               |
+| `SMTP_USERNAME` | E-mail usado para envio.            |
 | `SMTP_PASSWORD` | Senha de app do Gmail, sem espaços. |
-| `EMAIL_TO` | E-mail que receberá o relatório. |
+| `EMAIL_TO`      | E-mail que receberá o relatório.    |
 
-O e-mail enviado contém `relatorio-testes.html` e `relatorio-testes.json` como anexos.
+O e-mail enviado contém o status da execução, o link direto para a página da pipeline e o link direto do relatório Allure publicado no GitHub Pages.

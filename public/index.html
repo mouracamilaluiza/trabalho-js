@@ -1,52 +1,79 @@
 <!doctype html>
 <html lang="pt-BR">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Serviço de Pagamento</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <main class="app-shell">
-    <section class="panel payment-panel" aria-labelledby="payment-title">
-      <div>
-        <p class="eyebrow">Trabalho JS</p>
-        <h1 id="payment-title">Serviço de Pagamento</h1>
-        <p class="description">Registre pagamentos, categorize o valor automaticamente e consulte o último lançamento.</p>
-      </div>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Serviço de Pagamento</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="panel payment-panel" aria-labelledby="payment-title">
+        <div>
+          <p class="eyebrow">Trabalho JS</p>
+          <h1 id="payment-title">Serviço de Pagamento</h1>
+          <p class="description">
+            Registre pagamentos, categorize o valor automaticamente e consulte o
+            último lançamento.
+          </p>
+        </div>
 
-      <form id="payment-form" class="payment-form">
-        <label>
-          Código de barras
-          <input id="codigo-barras" name="codigoBarras" type="text" placeholder="1234-5678-9012" required>
-        </label>
+        <form id="payment-form" class="payment-form">
+          <label>
+            Código de barras
+            <input
+              id="codigo-barras"
+              name="codigoBarras"
+              type="text"
+              placeholder="1234-5678-9012"
+              required
+            />
+          </label>
 
-        <label>
-          Empresa
-          <input id="empresa" name="empresa" type="text" placeholder="Empresa Teste" required>
-        </label>
+          <label>
+            Empresa
+            <input
+              id="empresa"
+              name="empresa"
+              type="text"
+              placeholder="Empresa Teste"
+              required
+            />
+          </label>
 
-        <label>
-          Valor
-          <input id="valor" name="valor" type="number" min="0.01" step="0.01" placeholder="100.00" required>
-        </label>
+          <label>
+            Valor
+            <input
+              id="valor"
+              name="valor"
+              type="number"
+              min="0.01"
+              step="0.01"
+              placeholder="100.00"
+              required
+            />
+          </label>
 
-        <button type="submit">Registrar pagamento</button>
-      </form>
+          <button type="submit">Registrar pagamento</button>
+        </form>
 
-      <p id="feedback" class="feedback" role="status" aria-live="polite"></p>
-    </section>
+        <p id="feedback" class="feedback" role="status" aria-live="polite"></p>
+      </section>
 
-    <section class="panel result-panel" aria-labelledby="last-payment-title">
-      <h2 id="last-payment-title">Último pagamento</h2>
-      <div id="ultimo-pagamento" class="empty-state">Nenhum pagamento realizado.</div>
+      <section class="panel result-panel" aria-labelledby="last-payment-title">
+        <h2 id="last-payment-title">Último pagamento</h2>
+        <div id="ultimo-pagamento" class="empty-state">
+          Nenhum pagamento realizado.
+        </div>
 
-      <h2>Histórico</h2>
-      <ul id="lista-pagamentos" class="payment-list"></ul>
-    </section>
-  </main>
+        <h2>Histórico</h2>
+        <ul id="lista-pagamentos" class="payment-list"></ul>
+      </section>
+    </main>
 
-  <script src="../src/ServicoDePagamento.js"></script>
-  <script src="app.js"></script>
-</body>
+    <script src="../shared/utils/escape-html.js"></script>
+    <script src="../shared/domain/Pagamento.js"></script>
+    <script src="../shared/services/ServicoDePagamento.js"></script>
+    <script src="app.js"></script>
+  </body>
 </html>

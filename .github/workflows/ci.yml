@@ -9,6 +9,15 @@ on:
   schedule:
     - cron: "0 9 * * 1"
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
 jobs:
   testes:
     name: Executar testes
@@ -30,43 +39,52 @@ jobs:
           node-version: "20"
           cache: npm
 
+      - name: Configurar Java para Allure
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
       - name: Instalar dependencias
         run: npm ci
+
+      - name: Instalar navegadores do Playwright
+        run: npx playwright install --with-deps chromium
 
       - name: Executar lint
         run: npm run lint
 
-      - name: Executar testes automatizados
+      - name: Executar testes
         run: npm test
 
-      - name: Gerar relatorio de testes
+      - name: Gerar relatorio Allure
         if: always()
-        run: npm run report
+        run: npm run allure:generate
 
-      - name: Publicar relatorio na pipeline
+      - name: Configurar GitHub Pages
+        if: always()
+        uses: actions/configure-pages@v5
+
+      - name: Preparar relatorio para GitHub Pages
+        if: always()
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: allure-report
+
+      - name: Publicar relatorio no GitHub Pages
+        if: always()
+        id: publicar-pages
+        uses: actions/deploy-pages@v4
+
+      - name: Publicar relatorio Allure
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: relatorio-testes
+          name: allure-report
           path: |
-            relatorio-testes.json
-            relatorio-testes.html
-          if-no-files-found: error
+            allure-report/
+          if-no-files-found: warn
           retention-days: 7
-
-      - name: Validar secrets de e-mail
-        if: always()
-        run: |
-          missing=0
-
-          for secret in SMTP_SERVER SMTP_PORT SMTP_USERNAME SMTP_PASSWORD EMAIL_TO; do
-            if [ -z "${!secret}" ]; then
-              echo "::error::O secret $secret nao foi configurado em Settings > Secrets and variables > Actions."
-              missing=1
-            fi
-          done
-
-          exit $missing
 
       - name: Enviar relatorio por e-mail
         if: ${{ always() && env.SMTP_SERVER != '' && env.SMTP_PORT != '' && env.SMTP_USERNAME != '' && env.SMTP_PASSWORD != '' && env.EMAIL_TO != '' }}
@@ -82,11 +100,13 @@ jobs:
           body: |
             Ola!
 
-            A pipeline foi executada e os relatorios de testes estao anexados neste e-mail.
+            A pipeline foi executada.
 
             Repositorio: ${{ github.repository }}
             Workflow: ${{ github.workflow }}
             Branch: ${{ github.ref_name }}
             Status do job: ${{ job.status }}
             Execucao: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
-          attachments: relatorio-testes.html,relatorio-testes.json
+            Relatorio Allure: ${{ steps.publicar-pages.outputs.page_url }}
+
+            O relatorio Allure tambem esta disponivel nos artifacts da execucao.

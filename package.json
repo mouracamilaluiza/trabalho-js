@@ -1,15 +1,22 @@
 {
   "name": "trabalho-js",
   "version": "1.0.0",
-  "description": "Servico de pagamento com testes em Mocha e Node Assert.",
-  "main": "src/ServicoDePagamento.js",
+  "description": "Servico de pagamento com testes em Playwright.",
+  "main": "shared/services/ServicoDePagamento.js",
   "scripts": {
-    "lint": "node --check src/ServicoDePagamento.js && node --check public/app.js && node --check test/ServicoDePagamento.test.js && node --check test/frontend.test.js && node --check scripts/gerar-relatorio.js",
-    "test": "mocha",
-    "report": "node scripts/gerar-relatorio.js"
+    "lint": "prettier --check .",
+    "format": "prettier --write .",
+    "test": "playwright test",
+    "test:unit": "playwright test test/unit",
+    "test:e2e": "playwright test test/e2e",
+    "allure:generate": "allure generate allure-results --clean -o allure-report",
+    "allure:open": "allure open allure-report"
   },
   "devDependencies": {
-    "mocha": "^11.0.0"
+    "@playwright/test": "^1.60.0",
+    "allure-commandline": "^2.42.1",
+    "allure-playwright": "^3.9.0",
+    "prettier": "^3.8.4"
   },
   "overrides": {
     "diff": "^8.0.3",
