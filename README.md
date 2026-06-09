@@ -80,9 +80,12 @@ SMTP_SERVER=smtp.gmail.com
 SMTP_PORT=587
 SMTP_USERNAME=seu-email@gmail.com
 SMTP_PASSWORD=senha de app do Gmail
+EMAIL_TO=email que vai receber o relatório
 ```
 
-Esses secrets devem ser cadastrados em `Settings > Secrets and variables > Actions`. O e-mail é enviado para o endereço configurado em `SMTP_USERNAME` e leva `relatorio-testes.html` e `relatorio-testes.json` como anexos.
+Esses secrets devem ser cadastrados em `Settings > Secrets and variables > Actions`. O e-mail é enviado para o endereço configurado em `EMAIL_TO` e leva `relatorio-testes.html` e `relatorio-testes.json` como anexos.
+
+Caso `EMAIL_TO` não esteja cadastrado, a pipeline tenta usar `SMTP_USERNAME` como destinatário. Por isso, o erro `At least one of 'to', 'cc' or 'bcc' must be specified` normalmente indica que o secret de destinatário não foi criado ou está com nome diferente.
 
 ## Como acessar o relatório no GitHub Actions
 

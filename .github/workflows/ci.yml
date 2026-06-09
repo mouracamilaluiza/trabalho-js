@@ -57,8 +57,8 @@ jobs:
           username: ${{ secrets.SMTP_USERNAME }}
           password: ${{ secrets.SMTP_PASSWORD }}
           subject: Relatorio de testes - ${{ github.repository }}
-          to: ${{ secrets.SMTP_USERNAME }}
-          from: GitHub Actions
+          to: ${{ secrets.EMAIL_TO || secrets.SMTP_USERNAME || format('{0}@users.noreply.github.com', github.actor) }}
+          from: GitHub Actions <${{ secrets.SMTP_USERNAME }}>
           body: |
             Ola!
 
