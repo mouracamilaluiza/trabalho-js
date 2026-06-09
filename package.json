@@ -4,9 +4,9 @@
   "description": "Servico de pagamento com testes em Mocha e Node Assert.",
   "main": "src/ServicoDePagamento.js",
   "scripts": {
-  "test": "mocha",
-  "report": "mocha --reporter json > relatorio-testes.json"
-},
+    "test": "mocha",
+    "report": "node scripts/gerar-relatorio.js"
+  },
   "devDependencies": {
     "mocha": "^11.0.0"
   },

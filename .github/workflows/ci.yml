@@ -39,6 +39,8 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: relatorio-testes
-          path: relatorio-testes.json
+          path: |
+            relatorio-testes.json
+            relatorio-testes.html
           if-no-files-found: error
           retention-days: 7

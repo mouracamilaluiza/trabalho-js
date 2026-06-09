@@ -5,9 +5,9 @@
     "passes": 7,
     "pending": 0,
     "failures": 0,
-    "start": "2026-05-29T21:20:32.570Z",
-    "end": "2026-05-29T21:20:32.573Z",
-    "duration": 3
+    "start": "2026-06-09T13:58:32.448Z",
+    "end": "2026-06-09T13:58:32.457Z",
+    "duration": 9
   },
   "tests": [
     {
@@ -17,6 +17,12 @@
       "duration": 1,
       "currentRetry": 0,
       "speed": "fast",
+      "steps": [
+        "Criar uma instância do serviço de pagamento.",
+        "Executar o pagamento com código de barras, empresa e valor 156.87.",
+        "Verificar se o pagamento retornado contém os dados informados.",
+        "Validar se a categoria calculada foi `cara`."
+      ],
       "err": {}
     },
     {
@@ -26,6 +32,12 @@
       "duration": 0,
       "currentRetry": 0,
       "speed": "fast",
+      "steps": [
+        "Criar uma instância do serviço de pagamento.",
+        "Executar o pagamento com valor igual a 100.00.",
+        "Verificar se o pagamento retornado contém os dados informados.",
+        "Validar se a categoria calculada foi `padrão`."
+      ],
       "err": {}
     },
     {
@@ -35,6 +47,12 @@
       "duration": 0,
       "currentRetry": 0,
       "speed": "fast",
+      "steps": [
+        "Criar uma instância do serviço de pagamento.",
+        "Executar o pagamento com valor 100.01.",
+        "Verificar se o pagamento retornado contém os dados informados.",
+        "Validar se a categoria calculada foi `cara`."
+      ],
       "err": {}
     },
     {
@@ -44,6 +62,12 @@
       "duration": 0,
       "currentRetry": 0,
       "speed": "fast",
+      "steps": [
+        "Criar uma instância do serviço de pagamento.",
+        "Executar o pagamento com valor 99.99.",
+        "Verificar se o pagamento retornado contém os dados informados.",
+        "Validar se a categoria calculada foi `padrão`."
+      ],
       "err": {}
     },
     {
@@ -53,6 +77,12 @@
       "duration": 0,
       "currentRetry": 0,
       "speed": "fast",
+      "steps": [
+        "Criar uma instância do serviço de pagamento.",
+        "Executar o primeiro pagamento.",
+        "Executar o segundo pagamento.",
+        "Validar se a lista de pagamentos contém os dois registros na ordem correta."
+      ],
       "err": {}
     },
     {
@@ -62,6 +92,13 @@
       "duration": 0,
       "currentRetry": 0,
       "speed": "fast",
+      "steps": [
+        "Criar uma instância do serviço de pagamento.",
+        "Executar um primeiro pagamento.",
+        "Executar um segundo pagamento.",
+        "Consultar o último pagamento registrado.",
+        "Validar se o retorno corresponde ao segundo pagamento."
+      ],
       "err": {}
     },
     {
@@ -71,6 +108,11 @@
       "duration": 0,
       "currentRetry": 0,
       "speed": "fast",
+      "steps": [
+        "Criar uma instância do serviço de pagamento.",
+        "Consultar o último pagamento sem registrar pagamentos antes.",
+        "Validar se o retorno é `null`."
+      ],
       "err": {}
     }
   ],
@@ -84,6 +126,12 @@
       "duration": 1,
       "currentRetry": 0,
       "speed": "fast",
+      "steps": [
+        "Criar uma instância do serviço de pagamento.",
+        "Executar o pagamento com código de barras, empresa e valor 156.87.",
+        "Verificar se o pagamento retornado contém os dados informados.",
+        "Validar se a categoria calculada foi `cara`."
+      ],
       "err": {}
     },
     {
@@ -93,6 +141,12 @@
       "duration": 0,
       "currentRetry": 0,
       "speed": "fast",
+      "steps": [
+        "Criar uma instância do serviço de pagamento.",
+        "Executar o pagamento com valor igual a 100.00.",
+        "Verificar se o pagamento retornado contém os dados informados.",
+        "Validar se a categoria calculada foi `padrão`."
+      ],
       "err": {}
     },
     {
@@ -102,6 +156,12 @@
       "duration": 0,
       "currentRetry": 0,
       "speed": "fast",
+      "steps": [
+        "Criar uma instância do serviço de pagamento.",
+        "Executar o pagamento com valor 100.01.",
+        "Verificar se o pagamento retornado contém os dados informados.",
+        "Validar se a categoria calculada foi `cara`."
+      ],
       "err": {}
     },
     {
@@ -111,6 +171,12 @@
       "duration": 0,
       "currentRetry": 0,
       "speed": "fast",
+      "steps": [
+        "Criar uma instância do serviço de pagamento.",
+        "Executar o pagamento com valor 99.99.",
+        "Verificar se o pagamento retornado contém os dados informados.",
+        "Validar se a categoria calculada foi `padrão`."
+      ],
       "err": {}
     },
     {
@@ -120,6 +186,12 @@
       "duration": 0,
       "currentRetry": 0,
       "speed": "fast",
+      "steps": [
+        "Criar uma instância do serviço de pagamento.",
+        "Executar o primeiro pagamento.",
+        "Executar o segundo pagamento.",
+        "Validar se a lista de pagamentos contém os dois registros na ordem correta."
+      ],
       "err": {}
     },
     {
@@ -129,6 +201,13 @@
       "duration": 0,
       "currentRetry": 0,
       "speed": "fast",
+      "steps": [
+        "Criar uma instância do serviço de pagamento.",
+        "Executar um primeiro pagamento.",
+        "Executar um segundo pagamento.",
+        "Consultar o último pagamento registrado.",
+        "Validar se o retorno corresponde ao segundo pagamento."
+      ],
       "err": {}
     },
     {
@@ -138,6 +217,11 @@
       "duration": 0,
       "currentRetry": 0,
       "speed": "fast",
+      "steps": [
+        "Criar uma instância do serviço de pagamento.",
+        "Consultar o último pagamento sem registrar pagamentos antes.",
+        "Validar se o retorno é `null`."
+      ],
       "err": {}
     }
   ]

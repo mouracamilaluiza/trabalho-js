@@ -22,6 +22,9 @@ src/
 test/
   ServicoDePagamento.test.js
 
+scripts/
+  gerar-relatorio.js
+
 .github/
   workflows/
     ci.yml
@@ -45,7 +48,10 @@ npm test
 npm run report
 ```
 
-O comando acima executa o Mocha com o reporter JSON e gera o arquivo `relatorio-testes.json`.
+O comando acima executa os testes com Mocha e gera dois arquivos:
+
+- `relatorio-testes.json`: relatório estruturado para leitura automatizada.
+- `relatorio-testes.html`: relatório visual para abrir no navegador, com resumo, status de cada teste e passos verificados em cada cenário.
 
 ## Pipeline de integração contínua
 
@@ -60,14 +66,15 @@ Ela contempla os requisitos:
 - Execução agendada toda segunda-feira às 09:00 UTC, usando `schedule` com cron.
 - Instalação limpa das dependências com `npm ci`.
 - Execução dos testes automatizados com `npm test`.
-- Geração do relatório de testes com `npm run report`.
-- Publicação do arquivo `relatorio-testes.json` como artifact da pipeline.
+- Geração dos relatórios de teste com `npm run report`.
+- Publicação dos arquivos `relatorio-testes.json` e `relatorio-testes.html` como artifact da pipeline.
 
 ## Como acessar o relatório no GitHub Actions
 
 1. Acesse a [página da pipeline no GitHub Actions](https://github.com/mouracamilaluiza/trabalho-js/actions/workflows/ci.yml).
 2. Abra a execução da workflow `CI - Testes Automatizados`.
 3. Ao final da página da execução, baixe o artifact chamado `relatorio-testes`.
+4. Extraia o arquivo baixado e abra `relatorio-testes.html` no navegador.
 
 O relatório também é gerado quando os testes falham, porque as etapas de geração e publicação usam `if: always()`.
 
