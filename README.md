@@ -19,6 +19,10 @@ src/
 
 test/
   ServicoDePagamento.test.js
+
+.github/
+  workflows/
+    ci.yml
 ```
 
 ## Instalação
@@ -27,20 +31,57 @@ test/
 npm install
 ```
 
-## Executar os testes
+## Executar os testes localmente
 
 ```bash
 npm test
 ```
 
-## Gerar relatório dos testes
+## Gerar relatório dos testes localmente
 
 ```bash
-npx mocha --reporter json > relatorio-testes.json
+npm run report
 ```
+
+O comando acima executa o Mocha com o reporter JSON e gera o arquivo `relatorio-testes.json`.
+
+## Pipeline de integração contínua
+
+A pipeline foi criada com GitHub Actions no arquivo `.github/workflows/ci.yml`.
+
+Ela contempla os requisitos:
+
+- Execução por `push` nas branches `main` e `master`.
+- Execução manual pelo botão `Run workflow`, usando o evento `workflow_dispatch`.
+- Execução agendada toda segunda-feira às 09:00 UTC, usando `schedule` com cron.
+- Instalação limpa das dependências com `npm ci`.
+- Execução dos testes automatizados com `npm test`.
+- Geração do relatório de testes com `npm run report`.
+- Publicação do arquivo `relatorio-testes.json` como artifact da pipeline.
+
+## Como acessar o relatório no GitHub Actions
+
+1. Acesse a aba `Actions` do repositório no GitHub.
+2. Abra a execução da workflow `CI - Testes Automatizados`.
+3. Ao final da página da execução, baixe o artifact chamado `relatorio-testes`.
+
+O relatório também é gerado quando os testes falham, porque as etapas de geração e publicação usam `if: always()`.
+
+## Conceitos utilizados
+
+- `workflow`: arquivo YAML que define a automação executada pelo GitHub Actions.
+- `on`: define os eventos que disparam a pipeline, como `push`, `workflow_dispatch` e `schedule`.
+- `job`: grupo de etapas executadas em um ambiente virtual.
+- `runner`: máquina disponibilizada pelo GitHub para executar a pipeline. Neste projeto foi usado `ubuntu-latest`.
+- `step`: cada ação ou comando executado dentro do job.
+- `actions/checkout`: action usada para baixar o código do repositório no runner.
+- `actions/setup-node`: action usada para configurar a versão do Node.js.
+- `artifact`: arquivo gerado durante a pipeline e armazenado para consulta posterior.
+- `cron`: sintaxe usada para configurar execuções agendadas.
 
 ## Tecnologias
 
 - Node.js
 - Mocha
 - Node Assert
+- GitHub Actions
